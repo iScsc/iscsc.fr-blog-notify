@@ -4,7 +4,7 @@ Bot to notify on Discord that a new article has been created on the club website
 
 ## How to
 
-I wrote a simple tutorial on the basics to build a similar project on the [iscsc website](https://iscsc.fr/blog). Look for the blog post "Making a Discord bot to notify of new articles" from the 12th of December, 2022 until urls are fixed
+I wrote a simple tutorial on the basics to make a similar bot on the [iscsc website](https://iscsc.fr/blog). Look for the blog post titled "Making a Discord bot to notify of new articles" from the 7th of December, 2022 until urls are fixed
 
 ## Config
 
