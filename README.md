@@ -2,6 +2,10 @@
 
 Bot to notify on Discord that a new article has been created on the club website.
 
+## How to
+
+I wrote a simple tutorial on the basics to build a similar project on the [iscsc website](https://iscsc.fr/blog). Look for the blog post "Making a Discord bot to notify of new articles" from the 12th of December, 2022 until urls are fixed
+
 ## Config
 
 In `main.py`, specify your Discord token and the channel ID in which the bot needs to post notifications. You can also chose the refresh timer, in minutes.
