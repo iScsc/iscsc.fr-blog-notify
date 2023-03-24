@@ -16,3 +16,8 @@ URLs to both the API and the blog posts need to be specified in `blogReader.py`,
 BLOG_URL = "https://iscsc.fr/blog"
 API_URL = "https://iscsc.fr/api/articles"
 ```
+
+## Start the bot
+To run it on the host system simply `python3 main.py`.
+
+**But** you really should containerize it thanks to the provided `Dockerfile`, you just have to run `./run.sh` the script clean previous running containers, build the current one and start it.
