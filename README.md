@@ -24,7 +24,7 @@ To run it on the host system simply run `python3 main.py`.
 :warning: but you **should really** consider using the [containerized deployment](#Containerized-with-Docker).
 
 ### Containerized with Docker
-The bot can run in Docker thanks to the provided `Dockerfile`. To ease the starting, you just have to run `./run.sh`: the script cleans previous running containers, builds the current one and starts it.
+The bot can run in Docker thanks to the provided `Dockerfile`. To start the bot in Docker, you just have to run `./run.sh`: the script cleans previous running containers, builds the current one and starts it.
 
 Once the command is finished, simply run `docker ps` to check that the bot is indeed running, if you can't see a `iscsc.fr-notify-bot:latest` container running check the [debug section](#Debug).
 
