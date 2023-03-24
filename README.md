@@ -18,6 +18,17 @@ API_URL = "https://iscsc.fr/api/articles"
 ```
 
 ## Start the bot
-To run it on the host system simply `python3 main.py`.
+### Directly on host system
+To run it on the host system simply run `python3 main.py`.
 
-**But** you really should containerize it thanks to the provided `Dockerfile`, you just have to run `./run.sh` the script clean previous running containers, build the current one and start it.
+:warning: but you **should really** consider using the [containerized deployment](#Containerized-with-Docker).
+
+### Containerized with Docker
+The bot can run in Docker thanks to the provided `Dockerfile`. To ease the starting, you just have to run `./run.sh`: the script cleans previous running containers, builds the current one and starts it.
+
+Once the command is finished, simply run `docker ps` to check that the bot is indeed running, if you can't see a `iscsc.fr-notify-bot:latest` container running check the [debug section](#Debug).
+
+#### Debug
+If the container isn't running after `./run.sh` it has probabbly crashed due to an error, first check that you well set up the required variables, described in the [config section](#Config).  
+After re-running `./run.sh` if the container is still not running try to start it with the last line of `run.sh` (`docker run...`) **removing `--detach`**, you'll get the output in your terminal and will be able to debug the bot.  
+Also, feel free to contact any of the maintainer or open an issue if needed.
