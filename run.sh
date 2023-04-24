@@ -5,4 +5,4 @@ NAME="iscsc.fr-notify-bot"
 
 docker stop $(docker ps --all --quiet --filter ancestor=${NAME} --format="{{.ID}}")
 docker build -t ${NAME} .
-docker run --rm --interactive --tty --detach ${NAME}:latest
+docker run --rm --interactive --tty --detach --name ${NAME} ${NAME}:latest
