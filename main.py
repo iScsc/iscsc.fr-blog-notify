@@ -1,10 +1,15 @@
+from os import getenv
 import discord
 from blogReader import APIChecker, msg_new_article, build_embed
 
 from discord.ext import commands,tasks
 
-BOT_TOKEN = ''
-CHANNEL_ID = ''
+from dotenv import load_dotenv
+
+load_dotenv()
+
+BOT_TOKEN = getenv('BOT_TOKEN')
+CHANNEL_ID = getenv('CHANNEL_ID')
 
 apc = APIChecker()
 
