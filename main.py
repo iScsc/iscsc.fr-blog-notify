@@ -1,4 +1,5 @@
-from os import getenv
+from os import getenv, path
+import logging
 import discord
 from discord.ext import commands,tasks
 
@@ -10,17 +11,33 @@ from blogReader import APIChecker, msg_new_article, build_embed
 # Set up global variables
 BOT_TOKEN = getenv('BOT_TOKEN')
 CHANNEL_ID = getenv('CHANNEL_ID')
+REFRESH_DELAY = int(getenv('REFRESH_DELAY')) #in minutes
 
 # LOG_LEVEL can either be an int or a string
 LOG_LEVEL = getenv('LOG_LEVEL')
 if LOG_LEVEL.isnumeric():
     LOG_LEVEL = int(LOG_LEVEL)
 
+# Set up logging
 discord.utils.setup_logging(root=True, level=LOG_LEVEL)
 
-apc = APIChecker()
+def log2file_handler():
+    log_file = getenv('LOG_FILE')
+    if not log_file:
+        return None
 
-REFRESH_DELAY = int(getenv('REFRESH_DELAY')) #in minutes
+    logs_dir = path.dirname(log_file)
+    if not path.exists(logs_dir) or path.isfile(logs_dir):
+        logging.error("base directory of '%s' : '%s' doesn't exists or is a file.", log_file, logs_dir)
+        logging.error("won't log to '%s'", log_file)
+        return None
+
+    return logging.FileHandler(log_file, mode='a')
+
+file_handler = log2file_handler()
+if file_handler is not None:
+    discord.utils.setup_logging(handler=file_handler, root=True, level=logging.INFO)
+    logging.info("FileHandler added to root logger it will write to '%s'", file_handler.stream.name)
 
 # Set up the API checker object
 apc = APIChecker()
