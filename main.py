@@ -26,7 +26,7 @@ async def on_ready():
     channel_notify[0] = await bot.fetch_channel(CHANNEL_ID)
     auto_send.start()
 
-@tasks.loop(minutes=REFRESH_TIME)
+@tasks.loop(minutes=REFRESH_DELAY)
 async def auto_send():
     new = apc.checkUpdate()
     for a in new:

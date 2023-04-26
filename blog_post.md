@@ -58,13 +58,13 @@ We are first going to "connect" the bot to the channel, using the `fetch_channel
 ```python
 from discord.ext import tasks
 
-@tasks.loop(minutes=REFRESH_TIME)
+@tasks.loop(minutes=REFRESH_DELAY)
 async def auto_send_message()
     channel = await bot.fetch_channel(CHANNEL_ID)
     channel.send("Message")
 ```
 
-Here, the @tasks.loop(minutes=REFRESH_TIME) decorator makes our function a looping task for our bot, repeating it every REFRESH_TIME minutes - you can also set this to seconds or hour if you wish to do so.
+Here, the @tasks.loop(minutes=REFRESH_DELAY) decorator makes our function a looping task for our bot, repeating it every REFRESH_DELAY minutes - you can also set this to seconds or hour if you wish to do so.
 
 Finally, to make it so your bot starts its task at startup, add the following function to your code:
 
