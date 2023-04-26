@@ -1,14 +1,18 @@
+from os import getenv
 import discord
-from blogReader import APIChecker, msg_new_article, build_embed
-
 from discord.ext import commands,tasks
 
-BOT_TOKEN = ''
-CHANNEL_ID = ''
+from dotenv import load_dotenv
+load_dotenv()
+
+from blogReader import APIChecker, msg_new_article, build_embed
+
+BOT_TOKEN = getenv('BOT_TOKEN')
+CHANNEL_ID = getenv('CHANNEL_ID')
 
 apc = APIChecker()
 
-REFRESH_TIME = 10 #in minutes
+REFRESH_DELAY = int(getenv('REFRESH_DELAY')) #in minutes
 
 intent = discord.Intents.default()
 intent.message_content = True
@@ -22,7 +26,7 @@ async def on_ready():
     channel_notify[0] = await bot.fetch_channel(CHANNEL_ID)
     auto_send.start()
 
-@tasks.loop(minutes=REFRESH_TIME)
+@tasks.loop(minutes=REFRESH_DELAY)
 async def auto_send():
     new = apc.checkUpdate()
     for a in new:
