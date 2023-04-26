@@ -9,7 +9,7 @@ I wrote a simple tutorial on the basics to make a similar bot on the [iscsc webs
 ## Config
 *see [.env.example](./.env.example)*
 
-In a `.env` file, specify your Discord token and the channel ID in which the bot needs to post notifications. You can also chose the refresh timer, in minutes.
+In a `.env` file, specify your Discord token and the channel ID in which the bot needs to post notifications. You can also chose the refresh delay, in minutes.
 
 URLs to both the API and the blog posts need to be specified in the `.env` too, and you can also chose the color of the embed banner but there is a default value in `blogReader.py`. For the club website, we have the following URLs:
 

@@ -12,7 +12,7 @@ CHANNEL_ID = getenv('CHANNEL_ID')
 
 apc = APIChecker()
 
-REFRESH_TIME = 10 #in minutes
+REFRESH_DELAY = int(getenv('REFRESH_DELAY')) #in minutes
 
 intent = discord.Intents.default()
 intent.message_content = True
