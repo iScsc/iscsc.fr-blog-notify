@@ -7,6 +7,7 @@ load_dotenv()
 
 from blogReader import APIChecker, msg_new_article, build_embed
 
+# Set up global variables
 BOT_TOKEN = getenv('BOT_TOKEN')
 CHANNEL_ID = getenv('CHANNEL_ID')
 
@@ -21,6 +22,11 @@ apc = APIChecker()
 
 REFRESH_DELAY = int(getenv('REFRESH_DELAY')) #in minutes
 
+# Set up the API checker object
+apc = APIChecker()
+
+
+# Set up the discord bot and its event and loop
 intent = discord.Intents.default()
 intent.message_content = True
 
