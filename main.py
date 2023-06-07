@@ -9,6 +9,9 @@ from blogReader import APIChecker, msg_new_article, build_embed
 
 BOT_TOKEN = getenv('BOT_TOKEN')
 CHANNEL_ID = getenv('CHANNEL_ID')
+LOG_LEVEL = getenv('LOG_LEVEL')
+
+discord.utils.setup_logging(root=True, level=LOG_LEVEL)
 
 apc = APIChecker()
 
@@ -35,7 +38,7 @@ async def auto_send():
 
 if __name__ == "__main__":
     try:
-        bot.run(BOT_TOKEN)
+        bot.run(BOT_TOKEN, log_handler=None)
     except discord.errors.LoginFailure:
         print("Invalid discord token")
         exit(1)
