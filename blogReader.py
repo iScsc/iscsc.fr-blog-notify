@@ -23,11 +23,13 @@ class APIChecker:
             self.__cache = requests.get(self.url).json()
             return
         self.__new = requests.get(self.url).json()
+        self.logger.info("'getArticles' request sent")
     
     def __cacheArticlesID(self):
         self.__cachedArticlesID = []
         for dic in self.__cache:
             self.__cachedArticlesID.append(dic['_id'])
+        self.logger.info("'cacheArticlesID' updated")
 
     def recache(self):
         new_articles = self.checkUpdate()
