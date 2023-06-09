@@ -9,7 +9,13 @@ from blogReader import APIChecker, msg_new_article, build_embed
 
 BOT_TOKEN = getenv('BOT_TOKEN')
 CHANNEL_ID = getenv('CHANNEL_ID')
-LOG_LEVEL = getenv('LOG_LEVEL')
+
+# LOG_LEVEL can either be an int or a string
+envLog_Level = getenv('LOG_LEVEL')
+if envLog_Level.isnumeric:
+    LOG_LEVEL = int(envLog_Level)
+else:
+    LOG_LEVEL = envLog_Level
 
 discord.utils.setup_logging(root=True, level=LOG_LEVEL)
 
@@ -38,7 +44,8 @@ async def auto_send():
 
 if __name__ == "__main__":
     try:
-        bot.run(BOT_TOKEN, log_handler=None)
+        bot.run(BOT_TOKEN, log_handler=None) # Setting log_handler to None allows
+                                             # to propagate the handler to root for processing.
     except discord.errors.LoginFailure:
         print("Invalid discord token")
         exit(1)
