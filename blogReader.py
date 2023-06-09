@@ -16,7 +16,7 @@ class APIChecker:
         self.__new = []
         self.__getArticles()
         self.__cacheArticlesID()
-        self.handler = logging.getLogger(__name__)
+        self.logger = logging.getLogger(__name__)
 
     def __getArticles(self):
         if self.__cache == []:
