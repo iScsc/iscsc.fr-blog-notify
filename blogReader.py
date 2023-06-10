@@ -23,7 +23,7 @@ class APIChecker:
             self.__cache = requests.get(self.url).json()
             return
         self.__new = requests.get(self.url).json()
-        self.logger.info("'getArticles' request sent")
+        self.logger.info("'getArticles' request %s", self.url)
     
     def __cacheArticlesID(self):
         self.__cachedArticlesID = []
