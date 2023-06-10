@@ -11,11 +11,9 @@ BOT_TOKEN = getenv('BOT_TOKEN')
 CHANNEL_ID = getenv('CHANNEL_ID')
 
 # LOG_LEVEL can either be an int or a string
-envLog_Level = getenv('LOG_LEVEL')
-if envLog_Level.isnumeric:
-    LOG_LEVEL = int(envLog_Level)
-else:
-    LOG_LEVEL = envLog_Level
+LOG_LEVEL = getenv('LOG_LEVEL')
+if LOG_LEVEL.isnumeric:
+    LOG_LEVEL = int(LOG_LEVEL)
 
 discord.utils.setup_logging(root=True, level=LOG_LEVEL)
 
