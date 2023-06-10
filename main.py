@@ -12,7 +12,7 @@ CHANNEL_ID = getenv('CHANNEL_ID')
 
 # LOG_LEVEL can either be an int or a string
 LOG_LEVEL = getenv('LOG_LEVEL')
-if LOG_LEVEL.isnumeric:
+if LOG_LEVEL.isnumeric():
     LOG_LEVEL = int(LOG_LEVEL)
 
 discord.utils.setup_logging(root=True, level=LOG_LEVEL)
