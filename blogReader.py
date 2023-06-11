@@ -1,6 +1,7 @@
 from os import getenv
 import requests
 from discord import Embed
+import logging
 
 BLOG_URL = getenv('BLOG_URL')
 API_URL = getenv('API_URL')
@@ -15,17 +16,20 @@ class APIChecker:
         self.__new = []
         self.__getArticles()
         self.__cacheArticlesID()
+        self.logger = logging.getLogger(__name__)
 
     def __getArticles(self):
         if self.__cache == []:
             self.__cache = requests.get(self.url).json()
             return
         self.__new = requests.get(self.url).json()
+        self.logger.info("'getArticles' request %s", self.url)
     
     def __cacheArticlesID(self):
         self.__cachedArticlesID = []
         for dic in self.__cache:
             self.__cachedArticlesID.append(dic['_id'])
+        self.logger.info("'cacheArticlesID' updated")
 
     def recache(self):
         new_articles = self.checkUpdate()

@@ -10,6 +10,13 @@ from blogReader import APIChecker, msg_new_article, build_embed
 BOT_TOKEN = getenv('BOT_TOKEN')
 CHANNEL_ID = getenv('CHANNEL_ID')
 
+# LOG_LEVEL can either be an int or a string
+LOG_LEVEL = getenv('LOG_LEVEL')
+if LOG_LEVEL.isnumeric():
+    LOG_LEVEL = int(LOG_LEVEL)
+
+discord.utils.setup_logging(root=True, level=LOG_LEVEL)
+
 apc = APIChecker()
 
 REFRESH_DELAY = int(getenv('REFRESH_DELAY')) #in minutes
@@ -35,7 +42,8 @@ async def auto_send():
 
 if __name__ == "__main__":
     try:
-        bot.run(BOT_TOKEN)
+        bot.run(BOT_TOKEN, log_handler=None) # Setting log_handler to None allows
+                                             # to propagate the handler to root for processing.
     except discord.errors.LoginFailure:
         print("Invalid discord token")
         exit(1)
