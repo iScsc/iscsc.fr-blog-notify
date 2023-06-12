@@ -5,7 +5,7 @@ import logging
 
 BLOG_URL = getenv('BLOG_URL')
 API_URL = getenv('API_URL')
-EMBED_COLOR = int(getenv('EMBED_COLOR') or 0xffb7c5)
+EMBED_COLOR = int(getenv('EMBED_COLOR') or "0xffb7c5", base=16)
 
 class APIChecker:
 
@@ -14,9 +14,9 @@ class APIChecker:
         self.url = API_URL
         self.__cache = []
         self.__new = []
+        self.logger = logging.getLogger(__name__)
         self.__getArticles()
         self.__cacheArticlesID()
-        self.logger = logging.getLogger(__name__)
 
     def __getArticles(self):
         if self.__cache == []:
