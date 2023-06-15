@@ -8,3 +8,4 @@ COPY . .
 
 ENTRYPOINT ["python3"]
 CMD ["/opt/iscsc.fr-notify-bot/main.py"]
+USER blog_bot[:root]
