@@ -10,7 +10,7 @@ COPY . .
 # Documentation for RUN useradd : https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
 # Documentation for USER : https://docs.docker.com/engine/reference/builder/#user
 RUN useradd --no-log-init --system --gid root blog_bot
-USER blog_bot:root
+USER blog_bot
 
 ENTRYPOINT ["python3"]
 CMD ["/opt/iscsc.fr-notify-bot/main.py"]
