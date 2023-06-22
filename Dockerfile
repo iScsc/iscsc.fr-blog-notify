@@ -9,7 +9,7 @@ COPY . .
 # root group already exists, but we need to create the blog_root user
 # Documentation for RUN useradd : https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
 # Documentation for USER : https://docs.docker.com/engine/reference/builder/#user
-RUN useradd --no-log-init -r -g root blog_bot
+RUN useradd --no-log-init --system --gid root blog_bot
 USER blog_bot:root
 
 ENTRYPOINT ["python3"]
