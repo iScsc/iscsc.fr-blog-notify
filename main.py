@@ -22,7 +22,7 @@ if LOG_LEVEL.isnumeric():
 discord.utils.setup_logging(root=True, level=LOG_LEVEL)
 
 def log2file_handler():
-    log_file = getenv('LOG_FILE')
+    log_file = '.' + getenv('LOG_FILE')
     if not log_file:
         return None
 
