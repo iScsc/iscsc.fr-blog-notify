@@ -5,7 +5,6 @@
 
 #Define absolute path for the host and the serv from the relative common path
 HOST_LOG_FILE=$(realpath -P ${LOG_FILE})
-SERV_LOG_FILE=/opt/iscsc.fr-notify-bot${LOG_FILE}
 
 PATH=$(/usr/bin/getconf PATH || /bin/kill $$)
 NAME="iscsc.fr-notify-bot"
@@ -29,5 +28,5 @@ docker build -t ${NAME} .
 echo "${RED}[!]${NORMAL} the log file (mounted in the container) owner must match the uid in the container"
 docker run --detach --rm --interactive --tty \
     --name ${NAME} \
-    --volume ${HOST_LOG_FILE}:${SERV_LOG_FILE} \
+    --volume ${HOST_LOG_FILE}:/opt/iscsc.fr-notify-bot/${LOG_FILE} \
     ${NAME}:latest
