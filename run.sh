@@ -15,16 +15,12 @@ NORMAL=$(tput sgr0)
 
 # TODO: get LOG_FILE from .env and if it is empty remove the sudo and the warning
 
-
-# Hardcoded on purpose:
-CONT_UID=2000
-
 # Creating the file and setting the right permissions:
 
 # TODO: test $? and exit if ==1
 touch .$LOG_FILE
 chmod 664 .$LOG_FILE
-sudo chown ${CONT_UID}:root .$LOG_FILE
+sudo chown :root .$LOG_FILE
 
 # TODO: don't run the command if there is nothinf to stop
 docker stop $(docker ps --all --quiet --filter ancestor=${NAME} --format="{{.ID}}")
@@ -33,6 +29,5 @@ docker build -t ${NAME} .
 echo "${RED}[!]${NORMAL} the log file (mounted in the container) owner must match the uid in the container"
 docker run --detach --rm --interactive --tty \
     --name ${NAME} \
-    --user ${CONT_UID} \
     --volume ${HOST_LOG_FILE}:${SERV_LOG_FILE} \
     ${NAME}:latest
