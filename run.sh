@@ -18,9 +18,9 @@ NORMAL=$(tput sgr0)
 # Creating the file and setting the right permissions:
 
 # TODO: test $? and exit if ==1
-touch .$LOG_FILE
-chmod 664 .$LOG_FILE
-sudo chown :root .$LOG_FILE
+touch $HOST_LOG_FILE
+chmod 664 $HOST_LOG_FILE
+sudo chown :root $HOST_LOG_FILE
 
 # TODO: don't run the command if there is nothinf to stop
 docker stop $(docker ps --all --quiet --filter ancestor=${NAME} --format="{{.ID}}")
