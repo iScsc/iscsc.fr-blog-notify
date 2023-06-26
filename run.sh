@@ -4,7 +4,7 @@
 . ./.env
 
 #Define absolute path for the host and the serv from the relative common path
-HOST_LOG_FILE=$PWD${LOG_FILE}
+HOST_LOG_FILE=$(realpath -P ${LOG_FILE})
 SERV_LOG_FILE=/opt/iscsc.fr-notify-bot${LOG_FILE}
 
 PATH=$(/usr/bin/getconf PATH || /bin/kill $$)
