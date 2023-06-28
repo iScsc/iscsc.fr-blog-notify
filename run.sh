@@ -12,8 +12,6 @@ NAME="iscsc.fr-notify-bot"
 RED=$(tput setaf 1)
 NORMAL=$(tput sgr0)
 
-# TODO: get LOG_FILE from .env and if it is empty remove the sudo and the warning
-
 # Creating the file and setting the right permissions:
 
 # TODO: test $? and exit if ==1
