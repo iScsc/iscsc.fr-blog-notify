@@ -15,8 +15,10 @@ class APIChecker:
         self.__cache = []
         self.__new = []
         self.logger = logging.getLogger(__name__)
+        self.logger.info("Bot initialisation.")
         self.__getArticles()
         self.__cacheArticlesID()
+        self.logger.info("'cacheArticlesID' initialisated")
 
     def __getArticles(self):
         if self.__cache == []:
@@ -29,13 +31,13 @@ class APIChecker:
         self.__cachedArticlesID = []
         for dic in self.__cache:
             self.__cachedArticlesID.append(dic['_id'])
-        self.logger.info("'cacheArticlesID' updated")
 
     def recache(self):
         new_articles = self.checkUpdate()
         self.__cache = []
         self.__getArticles()
         self.__cacheArticlesID()
+        self.logger.info("'cacheArticlesID' updated")
         return new_articles
 
     def checkUpdate(self):
