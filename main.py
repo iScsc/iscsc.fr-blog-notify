@@ -42,9 +42,10 @@ async def auto_send():
 
 if __name__ == "__main__":
     try:
-        bot.run(BOT_TOKEN, log_handler=None) # Setting log_handler to None allows
-                                             # to propagate the handler to root for processing.
+        # Setting log_handler to None allows to propagate the handler to root for processing.
+        bot.run(BOT_TOKEN, log_handler=None)
+        
     except discord.errors.LoginFailure:
-        print("Invalid discord token")
+        bot.logger.error("/!\\ Invalid discord token /!\\")
         exit(1)
 
