@@ -42,7 +42,7 @@ async def auto_send():
 
 if __name__ == "__main__":
     try:
-        # Setting log_handler to None allows to propagate the handler to root for processing.
+        # Setting log_handler to None allows to propagate the logs to the root logger for processing.
         bot.run(BOT_TOKEN, log_handler=None)
         
     except discord.errors.LoginFailure:
