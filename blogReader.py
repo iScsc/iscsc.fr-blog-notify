@@ -18,7 +18,7 @@ class APIChecker:
         self.logger.info("Bot initialisation.")
         self.__getArticles()
         self.__cacheArticlesID()
-        self.logger.info("'cacheArticlesID' initialisated")
+        self.logger.info("'cacheArticlesID' initialized")
 
     def __getArticles(self):
         if self.__cache == []:
