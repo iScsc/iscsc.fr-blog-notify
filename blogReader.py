@@ -37,7 +37,7 @@ class APIChecker:
         self.__cache = []
         self.__getArticles()
         self.__cacheArticlesID()
-        self.logger.info("'cacheArticlesID' updated")
+        self.logger.info("articles cache updated")
         return new_articles
 
     def checkUpdate(self):
