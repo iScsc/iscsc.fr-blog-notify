@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#add environmental variable of .env to the bash script
+# import environment variable from the .env to the bash script
 . ./.env
 
 #Define absolute path for the host and the serv from the relative common path
