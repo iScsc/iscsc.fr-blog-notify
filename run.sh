@@ -29,7 +29,7 @@ fi
 docker stop $(docker ps --all --quiet --filter ancestor=${NAME} --format="{{.ID}}")
 
 docker build -t ${NAME} .
-echo "${RED}[!]${NORMAL} the log file (mounted in the container) owner must match the uid in the container"
+echo "${RED}[!]${NORMAL} the log file (mounted in the container) group must match with one of the groups of the user in the container"
 docker run --detach --rm --interactive --tty \
     --name ${NAME} \
     --volume ${HOST_LOG_FILE}:/opt/iscsc.fr-notify-bot/${LOG_FILE} \
