@@ -3,7 +3,7 @@
 # import environment variable from the .env to the bash script
 . ./.env
 
-#Define absolute path for the host and the serv from the relative common path
+# Define absolute path for log file in the host
 HOST_LOG_FILE=$(realpath -P ${LOG_FILE})
 
 PATH=$(/usr/bin/getconf PATH || /bin/kill $$)
