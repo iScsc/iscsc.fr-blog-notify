@@ -1,9 +1,9 @@
 #!/bin/sh
 
-#add environmental variable of .env to the bash script
+# import environment variable from the .env to the bash script
 . ./.env
 
-#Define absolute path for the host and the serv from the relative common path
+# Define absolute path for log file in the host
 [ -z "${LOG_FILE}" ] && { echo "LOG_FILE not defined in .env"; exit 1; }
 HOST_LOG_FILE=$(realpath -P ${LOG_FILE})
 
@@ -14,8 +14,6 @@ RED=$(tput setaf 1)
 NORMAL=$(tput sgr0)
 
 # Creating the file and setting the right permissions:
-
-# TODO: test $? and exit if ==1
 if [ -f "${HOST_LOG_FILE}" ]; then
     echo "$HOST_LOG_FILE already exist, take care the root group can read it in the following line !!!"
     ls -l ${HOST_LOG_FILE}
