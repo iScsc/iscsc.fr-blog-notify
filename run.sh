@@ -16,9 +16,14 @@ NORMAL=$(tput sgr0)
 # Creating the file and setting the right permissions:
 
 # TODO: test $? and exit if ==1
-touch $HOST_LOG_FILE
-chmod 664 $HOST_LOG_FILE
-sudo chown :root $HOST_LOG_FILE
+if [ -f "${HOST_LOG_FILE}" ]; then
+    echo "$HOST_LOG_FILE already exist, take care the root group can read it in the following line !!!"
+    ls -l ${HOST_LOG_FILE}
+else
+    touch $HOST_LOG_FILE
+    chmod 664 $HOST_LOG_FILE
+    sudo chown :root $HOST_LOG_FILE
+fi
 
 # TODO: don't run the command if there is nothinf to stop
 docker stop $(docker ps --all --quiet --filter ancestor=${NAME} --format="{{.ID}}")
