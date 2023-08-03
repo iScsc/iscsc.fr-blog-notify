@@ -23,8 +23,9 @@ else
     sudo chown :root $HOST_LOG_FILE
 fi
 
-# TODO: don't run the command if there is nothinf to stop
-docker stop $(docker ps --all --quiet --filter ancestor=${NAME} --format="{{.ID}}")
+# Stop old containers if any
+OLD_CONTAINERS=$(docker ps --all --quiet --filter ancestor=${NAME} --format="{{.ID}}")
+[ ! -z "$OLD_CONTAINERS" ] && docker stop $OLD_CONTAINERS
 
 docker build -t ${NAME} .
 echo "${RED}[!]${NORMAL} the log file (mounted in the container) group must match with one of the groups of the user in the container"
