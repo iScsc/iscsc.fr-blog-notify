@@ -15,7 +15,7 @@ NORMAL=$(tput sgr0)
 
 # Creating the file and setting the right permissions:
 if [ -f "${HOST_LOG_FILE}" ]; then
-    echo "$HOST_LOG_FILE already exist, take care the root group can read it in the following line !!!"
+    echo "${RED}[!]${NORMAL} $HOST_LOG_FILE already exists, take care that the ${RED}root group${NORMAL} can read it:"
     ls -l ${HOST_LOG_FILE}
 else
     touch $HOST_LOG_FILE
