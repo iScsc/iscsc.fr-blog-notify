@@ -18,7 +18,7 @@ if [ -f "${HOST_LOG_FILE}" ]; then
     echo "${RED}[!]${NORMAL} $HOST_LOG_FILE already exists, take care that the ${RED}root group${NORMAL} can read it:"
     ls -l ${HOST_LOG_FILE}
 else
-    touch $HOST_LOG_FILE
+    touch $HOST_LOG_FILE || { echo "${RED}[!]${NORMAL} Couldn't create '$HOST_LOG_FILE', maybe a parent directoy is missing?"; exit 1; }
     chmod 664 $HOST_LOG_FILE
     sudo chown :root $HOST_LOG_FILE
 fi
