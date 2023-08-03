@@ -4,7 +4,7 @@
 . ./.env
 
 # Define absolute path for log file in the host
-[ -z "${LOG_FILE}" ] && { echo "LOG_FILE not defined in .env"; exit 1; }
+[ -z "${LOG_FILE}" ] && { echo "${RED}[!]${NORMAL} LOG_FILE not defined in .env"; exit 1; }
 HOST_LOG_FILE=$(realpath -P ${LOG_FILE})
 
 PATH=$(/usr/bin/getconf PATH || /bin/kill $$)
