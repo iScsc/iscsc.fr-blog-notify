@@ -36,7 +36,7 @@ def log2file_handler():
 
 file_handler = log2file_handler()
 if file_handler is not None:
-    discord.utils.setup_logging(handler=file_handler, root=True, level=logging.INFO)
+    logging.getLogger().addHandler(file_handler)
     logging.info("FileHandler added to root logger it will write to '%s'", file_handler.stream.name)
 
 # Set up the API checker object
