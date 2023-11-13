@@ -40,7 +40,7 @@ async def auto_send():
         await channel_notify[0].send(msg_new_article(a), embed=build_embed(a))
 
 
-if __name__ == "__main__":
+async def start_bot():
     try:
         # Setting log_handler to None allows to propagate the logs to the root logger for processing.
         bot.run(BOT_TOKEN, log_handler=None)

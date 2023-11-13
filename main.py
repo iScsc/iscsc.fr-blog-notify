@@ -7,8 +7,8 @@ app = Flask("DiscordNotifyApp")
 @app.route('/new-blog', methods=["POST"])
 def hello_world():
     blog = request.get_json()
-    return str(blog)
+    return str(blog) or "nothing"
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host=('0.0.0.0'))
