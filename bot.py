@@ -15,7 +15,7 @@ LOG_LEVEL = getenv('LOG_LEVEL')
 if LOG_LEVEL.isnumeric():
     LOG_LEVEL = int(LOG_LEVEL)
 
-discord.utils.setup_logging(root=True, level=LOG_LEVEL)
+#discord.utils.setup_logging(root=True, level=LOG_LEVEL)
 
 apc = APIChecker()
 

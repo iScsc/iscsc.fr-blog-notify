@@ -16,8 +16,8 @@ class APIChecker:
         self.__new = []
         self.logger = logging.getLogger(__name__)
         self.logger.info("Bot initialisation.")
-        self.__getArticles()
-        self.__cacheArticlesID()
+        #self.__getArticles()
+        #self.__cacheArticlesID()
         self.logger.info("'cacheArticlesID' initialized")
 
     def __getArticles(self):
