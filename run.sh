@@ -1,8 +1,12 @@
 #!/bin/sh
 
 PATH=$(/usr/bin/getconf PATH || /bin/kill $$)
-NAME="iscsc.fr-notify-bot"
+NAME="iscscfr-blog-bot"
 
-docker stop $(docker ps --all --quiet --filter ancestor=${NAME} --format="{{.ID}}")
+docker container rm ${NAME}
 docker build -t ${NAME} .
-docker run --rm --interactive --tty --detach --name ${NAME} ${NAME}:latest
+docker run --interactive --tty \
+    -p 5000:5000 \
+    --volume .:/opt/blog_bot \
+    --name ${NAME} \
+    ${NAME}:latest
