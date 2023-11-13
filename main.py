@@ -1,13 +1,13 @@
-from flask import Flask
+from flask import Flask, request
 
 from bot import start_bot
 
 app = Flask("DiscordNotifyApp")
 
 @app.route('/new-blog', methods=["POST"])
-def hello_world():
+def new_blog():
     blog = request.get_json()
-    return str(blog) or "nothing"
+    return str(blog)
 
 
 if __name__ == '__main__':
