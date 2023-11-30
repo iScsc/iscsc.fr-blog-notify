@@ -18,6 +18,10 @@ BLOG_URL='https://iscsc.fr/blog'
 API_URL='https://iscsc.fr/api/articles'
 ```
 
+You can also configure a `LOG_FILE` environment variable, it must be a path to a file.  
+The logs will output to both stdout and this file, if empty or not defined the logs will only output to stdout.  
+> If it doesn't exist it will be created, if the bot is ran in the docker container the file will be shared with the host as a mounted volume in the container.
+
 ## Start the bot
 ### Directly on host system
 To run it on the host system simply run `python3 main.py`.
